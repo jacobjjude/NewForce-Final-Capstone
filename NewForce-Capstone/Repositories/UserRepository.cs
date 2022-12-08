@@ -39,5 +39,38 @@ namespace NewForce_Capstone.Repositories
                 }
             }
         }
+
+        public User GetById(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                    SELECT u.Id, u.firstName, u.lastName, u.photoUrl, u.email
+                    FROM [User] u
+                    WHERE u.Id = @id";
+
+                    DbUtils.AddParameter(cmd, "@id", id);
+                    var reader = cmd.ExecuteReader();
+
+                    User singleUser = null;
+                    if (reader.Read())
+                    {
+                        singleUser = new User()
+                        {
+                            Id = id,
+                            firstName = DbUtils.GetString(reader, "firstName"),
+                            lastName = DbUtils.GetString(reader, "lastName"),
+                            photoUrl = DbUtils.GetString(reader, "photoUrl"),
+                            email = DbUtils.GetString(reader, "photoUrl")
+                        };
+                    }
+                    reader.Close();
+                    return singleUser;
+                }
+            }
+        }
     }
 }

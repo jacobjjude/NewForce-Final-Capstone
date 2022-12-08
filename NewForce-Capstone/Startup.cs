@@ -30,6 +30,7 @@ namespace NewForce_Capstone
 
             services.AddControllers();
             services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IStatusRepo, StatusRepo>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "NewForce_Capstone", Version = "v1" });
