@@ -18,7 +18,7 @@ namespace NewForce_Capstone.Repositories
                 {
                     cmd.CommandText = @"
                     SELECT u.Id, u.firstName, u.lastName, u.photoUrl, u.email
-                    FROM User u";
+                    FROM [User] u";
 
                     var reader = cmd.ExecuteReader();
                     var users = new List<User>();
