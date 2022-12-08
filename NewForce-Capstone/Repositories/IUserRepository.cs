@@ -6,5 +6,6 @@ namespace NewForce_Capstone.Repositories
     public interface IUserRepository
     {
         public List<User> GetAll();
+        public User GetById(int id);
     }
 }

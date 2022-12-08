@@ -2,7 +2,7 @@
 {
     public class Status
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         public int userProfileId { get; set; }
         public string content { get; set; }
     }
