@@ -1,4 +1,4 @@
-﻿namespace NewForce_Capstone.Models
+﻿        namespace NewForce_Capstone.Models
 {
     public class User
     {
