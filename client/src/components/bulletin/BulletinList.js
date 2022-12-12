@@ -19,7 +19,7 @@ const BulletinList = () => {
   return (
     <>
       {bulletins.map((single) => {
-        return <h1>works</h1>;
+        <Bulletin key={single.Id} bulletin={single} />;
       })}
     </>
   );
