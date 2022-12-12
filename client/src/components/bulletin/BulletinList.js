@@ -18,9 +18,8 @@ const BulletinList = () => {
 
   return (
     <>
-      <h1>also works</h1>
-      {bulletins.map((r) => {
-        <p>{r.subject}</p>;
+      {bulletins.map((single) => {
+        return <h1>works</h1>;
       })}
     </>
   );

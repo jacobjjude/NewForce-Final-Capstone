@@ -1,8 +1,5 @@
 import React from "react";
 
-const baseUrl = `/api/post`;
-
 export const getAllBulletins = () => {
-  return fetch(baseUrl)
-  .then((res) => res.json());
+  return fetch("https://localhost:5001/api/Bulletin").then((res) => res.json());
 };
