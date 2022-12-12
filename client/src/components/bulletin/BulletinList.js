@@ -18,9 +18,11 @@ const BulletinList = () => {
 
   return (
     <>
-      {bulletins.map((single) => {
-        <Bulletin key={single.Id} bulletin={single} />;
-      })}
+      <p>
+        {bulletins.map((res) => (
+          <Bulletin key={res.Id} bulletin={res} />
+        ))}
+      </p>
     </>
   );
 };
