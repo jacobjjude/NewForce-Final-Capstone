@@ -7,5 +7,6 @@ namespace NewForce_Capstone.Repositories
     {
         public List<User> GetAll();
         public User GetById(int id);
+        public User GetByEmail(string email);
     }
 }

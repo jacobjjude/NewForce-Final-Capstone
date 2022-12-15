@@ -23,6 +23,7 @@ const StatusList = () => {
           <Status key={res.Id} status={res} />
         ))}
       </p>
+      <button>New Status</button>
     </>
   );
 };

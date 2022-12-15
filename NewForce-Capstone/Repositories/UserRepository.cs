@@ -72,5 +72,38 @@ namespace NewForce_Capstone.Repositories
                 }
             }
         }
+        public User GetByEmail(string email)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                    SELECT Id, firstName, lastName, photoUrl, email
+                    FROM [User]
+                    WHERE email = @email";
+                    cmd.Parameters.AddWithValue("@email", email);
+
+                    var reader = cmd.ExecuteReader();
+
+                    User user = null;
+                    if (reader.Read())
+                    {
+                        user = new User()
+                        {
+                            Id = DbUtils.GetInt(reader, "Id"),
+                            firstName = DbUtils.GetString(reader, "firstName"),
+                            lastName = DbUtils.GetString(reader, "lastName"),
+                            photoUrl = DbUtils.GetString(reader, "photoUrl"),
+                            email = DbUtils.GetString(reader, "email")
+                        };
+                    }
+
+                    reader.Close();
+                    return user;
+                }
+            }
+        }
     }
 }

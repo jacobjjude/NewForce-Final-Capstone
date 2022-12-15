@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import BulletinList from "../bulletin/BulletinList";
 import StatusList from "../status/StatusList";
+import { User } from "../userProfile/User";
 
 const Main = () => {
   return (
@@ -12,6 +13,9 @@ const Main = () => {
       </div>
       <div>
         <StatusList />
+      </div>
+      <div>
+        <User/>
       </div>
     </>
   );

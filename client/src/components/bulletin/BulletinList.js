@@ -23,6 +23,7 @@ const BulletinList = () => {
           <Bulletin key={res.Id} bulletin={res} />
         ))}
       </p>
+      <button>Create New Bulletin</button>
     </>
   );
 };
