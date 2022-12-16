@@ -6,5 +6,6 @@
         public int FriendId { get; set; }
         public int RankingId { get; set; }
         public int userId { get; set; }
+        public User user { get; set; }
     }
 }
