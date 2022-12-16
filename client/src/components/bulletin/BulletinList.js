@@ -23,7 +23,9 @@ const BulletinList = () => {
           <Bulletin key={res.Id} bulletin={res} />
         ))}
       </p>
-      <button>Create New Bulletin</button>
+      <Link to="/bulletins/add">
+        <strong>Add New Bulletin</strong>
+      </Link>
     </>
   );
 };

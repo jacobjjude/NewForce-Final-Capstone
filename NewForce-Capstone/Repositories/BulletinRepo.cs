@@ -37,5 +37,26 @@ namespace NewForce_Capstone.Repositories
                 }
             }
         }
+
+        public void Add(Bulletins Bulletin)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                    INSERT INTO Bulletins (userProfileId, subject, content)
+                    OUTPUT INSERTED.ID
+                    VALUES (@userProfileId, @subject, @content)";
+
+                    DbUtils.AddParameter(cmd, "@userProfileId", Bulletin.userProfileid);
+                    DbUtils.AddParameter(cmd, "@subject", Bulletin.subject);
+                    DbUtils.AddParameter(cmd, "@content", Bulletin.content);
+
+                    Bulletin.Id = (int)cmd.ExecuteScalar();
+                }
+            }
+        }
     }
 }

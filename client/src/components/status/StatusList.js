@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Card, CardImg, CardBody } from "reactstrap";
 import { Status } from "./Status";
 
-const StatusList = () => {
+export const StatusList = () => {
   const [statuses, setStatus] = useState([]);
 
   const getStatuses = () => {
@@ -23,7 +23,9 @@ const StatusList = () => {
           <Status key={res.Id} status={res} />
         ))}
       </p>
-      <button>New Status</button>
+      <Link to="/status/add">
+        <strong>Add New Status</strong>
+      </Link>
     </>
   );
 };

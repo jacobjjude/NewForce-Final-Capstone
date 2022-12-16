@@ -11,7 +11,7 @@ namespace NewForce_Capstone.Controllers
     public class StatusController : ControllerBase
     {
         private readonly IStatusRepo _statusRepo;
-        public StatusController (IStatusRepo statusRepo)
+        public StatusController(IStatusRepo statusRepo)
         {
             _statusRepo = statusRepo;
         }
@@ -20,6 +20,12 @@ namespace NewForce_Capstone.Controllers
         public IActionResult GetAll()
         {
             return Ok(_statusRepo.GetAll());
+        }
+        [HttpPost]
+        public IActionResult Post (Status status)
+        {
+            _statusRepo.Add(status);
+            return CreatedAtAction("Get", new {id = status.Id}, status);
         }
     }
 }

@@ -6,6 +6,8 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Main from "./main/Main";
 import { getCurrentUser } from "../Managers/UserManager";
 import { Login } from "./Login";
+import BulletinForm from "./bulletin/BulletinForm";
+import StatusForm from "./status/StatusForm";
 
 const ApplicationViews = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -25,6 +27,8 @@ const ApplicationViews = () => {
   ) : (
     <Routes>
       <Route path="/" element={<Main />} />
+      <Route path="/bulletins/add" element={<BulletinForm />} />
+      <Route path="/status/add" element={<StatusForm />} />
     </Routes>
   );
 };

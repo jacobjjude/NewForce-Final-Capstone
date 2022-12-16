@@ -36,5 +36,25 @@ namespace NewForce_Capstone.Repositories
                 }
             }
         }
+
+        public void Add(Status status)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                    INSERT INTO Status (userProfileId, content)
+                    OUTPUT INSERTED.ID
+                    VALUES (@userProfileId, @content)";
+
+                    DbUtils.AddParameter(cmd, "@userProfileId", status.userProfileId);
+                    DbUtils.AddParameter(cmd, "@content", status.content);
+
+                    status.Id = (int)cmd.ExecuteScalar();
+                }
+            }
+        }
     }
 }

@@ -8,5 +8,6 @@ namespace NewForce_Capstone.Repositories
     public interface IBulletinRepo
     {
         public List<Bulletins> GetAll();
+        public void Add(Bulletins Bulletin);
     }
 }
