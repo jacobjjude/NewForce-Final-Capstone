@@ -7,9 +7,9 @@ export const User = () => {
   const user = getCurrentUser();
 
   return (
-    <Card className="m-4">
-      <CardImg className="thumbnail" top src={user.photoUrl} alt="profile photo" />
-      <CardBody>
+    <Card className="m-4 profileCard">
+      <CardImg className="avatar" top src={user.photoUrl} alt="profile photo" />
+      <CardBody className="name">
         Hi! {user.firstName} {user.lastName}
       </CardBody>
     </Card>

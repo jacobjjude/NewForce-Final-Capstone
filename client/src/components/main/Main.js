@@ -5,21 +5,26 @@ import BulletinList from "../bulletin/BulletinList";
 import Top8FriendsList from "../friends/Top8FriendsList";
 import StatusList from "../status/StatusList";
 import { User } from "../userProfile/User";
+import "../../App.css";
 
 const Main = () => {
   return (
     <>
-      <div className="main">
-        <BulletinList />
-      </div>
-      <div className="main">
-        <StatusList />
-      </div>
-      <div className="main">
-        <User />
-      </div>
-      <div className="main">
-        <Top8FriendsList />
+      <div className="container">
+        <div className="left">
+          <User />
+        </div>
+        <div className="middle">
+          <div className="bulletins">
+            <BulletinList />
+          </div>
+          <div className="statuses">
+            <StatusList />
+          </div>
+        </div>
+        <div className="right">
+          <Top8FriendsList />
+        </div>
       </div>
     </>
   );

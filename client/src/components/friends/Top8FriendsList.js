@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Top8Friend } from "./Top8Friends";
 import { getCurrentUser } from "../../Managers/UserManager";
 import { Card, CardBody } from "reactstrap";
+import "../../App.css";
 
 export const Top8FriendsList = () => {
   const [friendList, setFriendList] = useState([]);
@@ -20,13 +21,14 @@ export const Top8FriendsList = () => {
 
   return (
     <>
-      <p>
-        {
-            friendList.map((res) => (
-                <Top8Friend key={res.id} friend={res}/>
-            ))
-        }
-      </p>
+      <div className="friend-header">
+        <h2 className="friends-title">Top 8 Friends</h2>
+      </div>
+      <div className="friends">
+        {friendList.map((res) => (
+          <Top8Friend key={res.id} friend={res} />
+        ))}
+      </div>
     </>
   );
 };

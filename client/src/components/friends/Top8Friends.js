@@ -5,9 +5,10 @@ import "../../App.css";
 
 export const Top8Friend = ({ friend }) => {
   return (
-    <Card>
+    <Card className="friend">
+      <h2>#{friend.rankingId}</h2>
       <CardImg className="thumbnailFriend" top src={friend.user?.photoUrl} />
-      <CardBody>
+      <CardBody className="friend-name">
         {friend.user?.firstName} {friend.user?.lastName}
       </CardBody>
     </Card>

@@ -4,6 +4,7 @@ import { getAllBulletins } from "../../Managers/BulletinManager";
 import { Link } from "react-router-dom";
 import { Card, CardImg, CardBody } from "reactstrap";
 import { Bulletin } from "./Bulletin";
+import "../../App.css";
 
 const BulletinList = () => {
   const [bulletins, setBulletin] = useState([]);
@@ -18,11 +19,11 @@ const BulletinList = () => {
 
   return (
     <>
-      <p>
+      <div className="board">
         {bulletins.map((res) => (
           <Bulletin key={res.Id} bulletin={res} />
         ))}
-      </p>
+      </div>
       <Link to="/bulletins/add">
         <strong>Add New Bulletin</strong>
       </Link>
