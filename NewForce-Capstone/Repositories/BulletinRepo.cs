@@ -58,5 +58,62 @@ namespace NewForce_Capstone.Repositories
                 }
             }
         }
+
+        public Bulletins GetByIdWithComments(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                    SELECT b.Id, b.userProfileId, b.subject, b.content, u.Id AS userId, u.firstName, u.lastName, u.photoUrl, u.email, bc.Id AS commentId, bc.postId, bc.userProfileId AS commentUser, bc.content AS commentContent
+                    FROM Bulletins b
+                    LEFT JOIN BulletinComments bc ON b.Id = bc.postId
+                    LEFT JOIN [User] u ON b.userProfileId = u.Id
+                    WHERE b.Id = @id";
+                    DbUtils.AddParameter(cmd, "@id", id);
+
+                    var reader = cmd.ExecuteReader();
+                    Bulletins bulletin = null;
+
+                    while (reader.Read())
+                    {
+                        if (bulletin == null)
+                        {
+                            bulletin = new Bulletins()
+                            {
+                                Id = id,
+                                userProfileid = DbUtils.GetInt(reader, "userProfileId"),
+                                subject = DbUtils.GetString(reader, "subject"),
+                                content = DbUtils.GetString(reader, "content"),
+                                user = new User()
+                                {
+                                    Id = DbUtils.GetInt(reader, "userId"),
+                                    firstName = DbUtils.GetString(reader, "firstName"),
+                                    lastName = DbUtils.GetString(reader, "lastName"),
+                                    photoUrl = DbUtils.GetString(reader, "photoUrl"),
+                                    email = DbUtils.GetString(reader, "email")
+                                },
+                                Comments = new List<BulletinComments>()
+                            };
+                        }
+                        if (DbUtils.IsNotDbNull(reader, "commentId"))
+                        {
+                            bulletin.Comments.Add(new BulletinComments()
+                            {
+                                Id = DbUtils.GetInt(reader, "commentId"),
+                                postId = DbUtils.GetInt(reader, "postId"),
+                                userProfileId = DbUtils.GetInt(reader, "commentUser"),
+                                content = DbUtils.GetString(reader, "commentContent")
+                            });
+                        }
+                    }
+
+                    reader.Close();
+                    return bulletin;
+                }    
+            }
+        }
     }
 }

@@ -8,5 +8,6 @@ namespace NewForce_Capstone.Models
         public int postId { get; set; }
         public int userProfileId { get; set; }
         public string content { get; set; }
+        public User user { get; set; }
     }
 }

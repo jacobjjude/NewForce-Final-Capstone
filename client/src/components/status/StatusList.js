@@ -18,7 +18,8 @@ export const StatusList = () => {
 
   return (
     <>
-      <p>
+    <h1>Statuses: </h1>
+      <p className="board">
         {statuses.map((res) => (
           <Status key={res.Id} status={res} />
         ))}

@@ -8,7 +8,7 @@ export const Bulletin = ({ bulletin }) => {
     <Card className="m-4">
       <CardBody className="post">
         <Link to={`/bulletins/${bulletin.id}`}>
-          <strong className="post-title">{bulletin.subject}</strong>
+          <strong className="post-title">{bulletin.content}</strong>
         </Link>
       </CardBody>
     </Card>

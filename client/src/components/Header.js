@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { logout } from "../Managers/UserManager";
 
 const Header = () => {
   return (
@@ -7,6 +8,7 @@ const Header = () => {
       <Link to="/" className="navbar-brand">
         YourPlace
       </Link>
+      {/* <button onClick={logout}>Log Out</button> */}
     </nav>
   );
 };

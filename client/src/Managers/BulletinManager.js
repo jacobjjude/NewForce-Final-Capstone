@@ -5,7 +5,6 @@ export const getAllBulletins = () => {
 };
 
 export const addBulletin = (singleBulletin) => {
-
   return fetch("https://localhost:5001/api/Bulletin", {
     method: "POST",
     headers: {
@@ -13,4 +12,10 @@ export const addBulletin = (singleBulletin) => {
     },
     body: JSON.stringify(singleBulletin),
   });
+};
+
+export const GetByIdWithComments = (id) => {
+  return fetch(
+    `https://localhost:5001/api/Bulletin/GetByIdWithComments/${id}`
+  ).then((res) => res.json());
 };

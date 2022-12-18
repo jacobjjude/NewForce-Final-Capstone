@@ -9,5 +9,6 @@ namespace NewForce_Capstone.Repositories
     {
         public List<Bulletins> GetAll();
         public void Add(Bulletins Bulletin);
+        public Bulletins GetByIdWithComments(int id);
     }
 }

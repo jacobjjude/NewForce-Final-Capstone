@@ -19,6 +19,7 @@ const BulletinList = () => {
 
   return (
     <>
+    <h1>Bulletins: </h1>
       <div className="board">
         {bulletins.map((res) => (
           <Bulletin key={res.Id} bulletin={res} />

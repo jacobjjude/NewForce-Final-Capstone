@@ -27,5 +27,15 @@ namespace NewForce_Capstone.Controllers
             _bulletinRepo.Add(bulletin);
             return CreatedAtAction("Get", new { id = bulletin.Id }, bulletin);
         }
+        [HttpGet("GetByIdWithComments/{id}")]
+        public IActionResult GetByIdWithComments(int id)
+        {
+            var bulletin = _bulletinRepo.GetByIdWithComments(id);
+            if (bulletin == null)
+            {
+                return NotFound();
+            }
+            return Ok(bulletin);
+        }
     }
 }

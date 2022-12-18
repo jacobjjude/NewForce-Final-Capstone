@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export const Status = ({status}) => {
     return (
         <Card>
-            <CardBody>
+            <CardBody className="post">
                 {status.content}
             </CardBody>
         </Card>
