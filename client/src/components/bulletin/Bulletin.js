@@ -31,7 +31,6 @@ export const Bulletin = ({ bulletin }) => {
               <Link to={`/bulletins/edit/${bulletin.id}`}>
                 <button>Edit</button>
               </Link>
-              <button>Delete</button>
             </>
           ) : (
             <></>

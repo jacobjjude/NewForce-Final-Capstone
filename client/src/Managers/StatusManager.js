@@ -13,3 +13,19 @@ export const addStatus = (singleStatus) => {
     body: JSON.stringify(singleStatus),
   });
 };
+
+export const GetStatusById = (id) => {
+  return fetch(`https://localhost:5001/api/Status/GetById/${id}`).then((res) =>
+    res.json()
+  );
+};
+
+export const editStatus = (status) => {
+  return fetch(`https://localhost:5001/api/Status/${status.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(status),
+  });
+};

@@ -7,5 +7,7 @@ namespace NewForce_Capstone.Repositories
     {
         public List<Status> GetAll();
         public void Add(Status status);
+        public void EditStatus(Status status);
+        public Status GetById(int id);
     }
 }

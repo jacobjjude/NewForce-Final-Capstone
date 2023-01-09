@@ -59,5 +59,59 @@ namespace NewForce_Capstone.Repositories
                 }
             }
         }
+
+        public void EditStatus(Status status)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                    UPDATE Status
+                    SET content = @content
+                    WHERE Id = @id";
+
+                    cmd.Parameters.AddWithValue("@content", status.content);
+                    cmd.Parameters.AddWithValue("@id", status.Id);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public Status GetById(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                    SELECT s.Id, s.userProfileId, s.content
+                    FROM Status s
+                    WHERE s.Id = @id";
+                    DbUtils.AddParameter(cmd, @"id", id);
+
+                    var reader = cmd.ExecuteReader();
+                    Status status = null;
+
+                    while (reader.Read())
+                    {
+                        if (status == null)
+                        {
+                            status = new Status()
+                            {
+                                Id = DbUtils.GetInt(reader, "Id"),
+                                userProfileId = DbUtils.GetInt(reader, "userProfileId"),
+                                content = DbUtils.GetString(reader, "content")
+                            };
+                        }
+                    }
+                    reader.Close();
+                    return status;
+                }
+            }
+        }
     }
 }

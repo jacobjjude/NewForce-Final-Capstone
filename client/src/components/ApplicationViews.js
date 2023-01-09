@@ -11,6 +11,7 @@ import StatusForm from "./status/StatusForm";
 import { BulletinDetails } from "./bulletin/BulletinDetails";
 import UserList from "./userProfile/UserList";
 import BulletinEdit from "./bulletin/BulletinEdit";
+import StatusEdit from "./status/StatusEdit";
 
 const ApplicationViews = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -34,6 +35,7 @@ const ApplicationViews = () => {
       <Route path="/bulletins/:id" element={<BulletinDetails />} />
       <Route path="/users" element={<UserList />} />
       <Route path="/bulletins/edit/:id" element={<BulletinEdit />} />
+      <Route path="/status/edit/:id" element={<StatusEdit />} />
     </Routes>
   );
 };

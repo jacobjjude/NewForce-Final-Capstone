@@ -32,7 +32,6 @@ export const Status = ({ status }) => {
               <Link to={`/status/edit/${status.id}`}>
                 <button>Edit</button>
               </Link>
-              <button>Delete</button>
             </>
           ) : (
             <></>
