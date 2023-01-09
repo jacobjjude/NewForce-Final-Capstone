@@ -16,8 +16,9 @@ namespace NewForce_Capstone.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                    SELECT s.Id, s.userProfileId, s.content
-                    FROM Status s";
+                    SELECT s.Id, s.userProfileId, s.content, u.firstName, u.lastName
+                    FROM Status s
+                    LEFT JOIN [User] u ON u.Id = s.userProfileId";
 
                     var reader = cmd.ExecuteReader();
                     var statuses = new List<Status>();
@@ -27,7 +28,9 @@ namespace NewForce_Capstone.Repositories
                         {
                             Id = DbUtils.GetInt(reader, "Id"),
                             userProfileId = DbUtils.GetInt(reader, "userProfileId"),
-                            content = DbUtils.GetString(reader, "content")
+                            content = DbUtils.GetString(reader, "content"),
+                            firstName = DbUtils.GetString(reader, "firstName"),
+                            lastName = DbUtils.GetString(reader, "lastName")
                         });
                     }
 

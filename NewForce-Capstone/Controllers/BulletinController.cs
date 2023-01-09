@@ -22,7 +22,7 @@ namespace NewForce_Capstone.Controllers
             return Ok(_bulletinRepo.GetAll());
         }
         [HttpPost]
-        public IActionResult Post (Bulletins bulletin)
+        public IActionResult Post(Bulletins bulletin)
         {
             _bulletinRepo.Add(bulletin);
             return CreatedAtAction("Get", new { id = bulletin.Id }, bulletin);
@@ -36,6 +36,23 @@ namespace NewForce_Capstone.Controllers
                 return NotFound();
             }
             return Ok(bulletin);
+        }
+
+        [HttpGet("GetById/{id}")]
+        public IActionResult GetById(int id)
+        {
+            var bulletin = _bulletinRepo.GetById(id);
+            if (bulletin == null)
+            {
+                return NotFound();
+            }
+            return Ok(bulletin);
+        }
+        [HttpPut("{id}")]
+        public IActionResult Put(Bulletins bulletin)
+        {
+            _bulletinRepo.EditBulletin(bulletin);
+            return NoContent();
         }
     }
 }

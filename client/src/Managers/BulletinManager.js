@@ -19,3 +19,19 @@ export const GetByIdWithComments = (id) => {
     `https://localhost:5001/api/Bulletin/GetByIdWithComments/${id}`
   ).then((res) => res.json());
 };
+
+export const GetById = (id) => {
+  return fetch(`https://localhost:5001/api/Bulletin/GetById/${id}`).then(
+    (res) => res.json()
+  );
+};
+
+export const editBulletin = (bulletin) => {
+  return fetch(`https://localhost:5001/api/Bulletin/${bulletin.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(bulletin),
+  });
+};

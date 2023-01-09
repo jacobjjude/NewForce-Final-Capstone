@@ -20,5 +20,7 @@ namespace NewForce_Capstone.Controllers
         {
             return Ok(_friendRepo.GetTop8(id));
         }
+
+
     }
 }
