@@ -9,7 +9,10 @@ const Header = () => {
       <Link to="/" className="navbar-brand">
         YourPlace
       </Link>
-      <Link to="/users" className="navbar-brand">Users</Link>
+      <Link to="/users" className="navbar-brand">
+        Users
+      </Link>
+      <Link to="/messages">Messages</Link>
       {/* <button onClick={logout}>Log Out</button> */}
     </nav>
   );

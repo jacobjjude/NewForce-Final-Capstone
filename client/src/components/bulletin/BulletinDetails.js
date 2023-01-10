@@ -23,14 +23,14 @@ export const BulletinDetails = () => {
           <h2>{bulletin.subject}</h2>
           <p>{bulletin.content}</p>
         </div>
-        <div className="bulletin-details-comment">
+        {/* <div className="bulletin-details-comment">
           <h3>Comments: </h3>
           <ListGroup>
             {bulletin.comments?.map((c) => (
               <ListGroupItem>{c.content}</ListGroupItem>
             ))}
           </ListGroup>
-        </div>
+        </div> */}
       </div>
     </>
   );

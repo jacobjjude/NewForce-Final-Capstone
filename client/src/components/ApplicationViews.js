@@ -12,6 +12,11 @@ import { BulletinDetails } from "./bulletin/BulletinDetails";
 import UserList from "./userProfile/UserList";
 import BulletinEdit from "./bulletin/BulletinEdit";
 import StatusEdit from "./status/StatusEdit";
+import { Messages } from "./messages/Messages";
+import { MessagesList } from "./messages/MessagesList";
+import { MessageDetails } from "./messages/MessageDetails";
+import { MessageReply } from "./messages/MessagesReply";
+import { MessageForm } from "./messages/MessageForm";
 
 const ApplicationViews = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -36,6 +41,10 @@ const ApplicationViews = () => {
       <Route path="/users" element={<UserList />} />
       <Route path="/bulletins/edit/:id" element={<BulletinEdit />} />
       <Route path="/status/edit/:id" element={<StatusEdit />} />
+      <Route path="/messages" element={<MessagesList />} />
+      <Route path="/messages/:id" element={<MessageDetails />} />
+      <Route path="/reply/:id" element={<MessageReply />} />
+      <Route path="/messages/new" element={<MessageForm />} />
     </Routes>
   );
 };

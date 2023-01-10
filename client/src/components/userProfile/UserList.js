@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { addNewFriend } from "../../Managers/FriendManager";
 import { addFriend } from "./UserAddDelete";
 import { removeFriend } from "./UserAddDelete";
+import "../styles/user.css";
 
 const UserList = () => {
   const [users, setUsers] = useState([]);
@@ -43,7 +44,9 @@ const UserList = () => {
     ) {
       return (
         <>
-          <button onClick={() => removeFriend(user.id, friend.id, friends)}>Remove Friend</button>
+          <button onClick={() => removeFriend(user.id, friend.id, friends)}>
+            Remove Friend
+          </button>
         </>
       );
     } else if (user.id === friend.id) {
@@ -62,11 +65,11 @@ const UserList = () => {
   return (
     <>
       <h1>Find a new friend!</h1>
-      <div>
+      <div className="friends-list">
         {users.map((res) => {
           return (
             <>
-              <Card className="m-4 profileCard">
+              <Card className="m-4 profileCard friends-card">
                 <CardImg
                   className="avatar"
                   top

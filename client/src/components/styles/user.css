@@ -1,0 +1,11 @@
+.friends-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 5px;
+}
+
+.friend-card {
+    width: 30%; /* adjust this value as needed */
+    margin: 1%;
+}
