@@ -21,6 +21,22 @@ namespace NewForce_Capstone.Controllers
             return Ok(_friendRepo.GetTop8(id));
         }
 
-
+        [HttpGet("GetAll")]
+        public IActionResult GetAll()
+        {
+            return Ok(_friendRepo.GetAll());
+        }
+        [HttpPost("newFriend")]
+        public IActionResult Post(Friends friend)
+        {
+            _friendRepo.Add(friend);
+            return CreatedAtAction("Get", new { id = friend.Id }, friend);
+        }
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _friendRepo.Delete(id);
+            return NoContent();
+        }
     }
 }

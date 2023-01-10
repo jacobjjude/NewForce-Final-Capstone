@@ -8,8 +8,6 @@ export const Status = ({ status }) => {
   const [user, setUser] = useState({});
   const localUser = getCurrentUser();
 
-  console.log(status.userProfileId);
-
   const checkStatusUserMatch = () => {
     if (localUser.id === status.userProfileId) {
       return true;

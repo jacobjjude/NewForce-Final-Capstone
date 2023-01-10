@@ -3,7 +3,7 @@
     public class Friends
     {
         public int Id { get; set; }
-        public int userProfileSender { get; set; }
-        public int userProfileReceive { get; set; }
+        public int userProfileIdSender { get; set; }
+        public int userProfileIdReceive { get; set; }
     }
 }

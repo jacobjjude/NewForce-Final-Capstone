@@ -20,6 +20,3 @@ export const GetAllUsers = () => {
   return fetch(`https://localhost:5001/api/User`).then((res) => res.json());
 };
 
-export const isFriendsWithUser = (userId) => {
-  
-}

@@ -51,5 +51,68 @@ namespace NewForce_Capstone.Repositories
                 }
             }
         }
+
+        public List<Friends> GetAll()
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                    SELECT f.Id, f.userProfileIdSender, f.userProfileIdReceive
+                    FROM Friends f";
+
+                    var reader = cmd.ExecuteReader();
+                    var friends = new List<Friends>();
+                    while (reader.Read())
+                    {
+                        friends.Add(new Friends()
+                        {
+                            Id = DbUtils.GetInt(reader, "Id"),
+                            userProfileIdReceive = DbUtils.GetInt(reader, "userProfileIdReceive"),
+                            userProfileIdSender = DbUtils.GetInt(reader, "userProfileIdSender")
+                        });
+                    }
+                    reader.Close();
+                    return friends;
+                }
+            }
+        }
+
+        public void Add(Friends friend)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                    INSERT INTO Friends (userProfileIdSender, userProfileIdReceive)
+                    OUTPUT INSERTED.ID
+                    VALUES (@userProfileIdSender, @userProfileIdReceive)";
+                    DbUtils.AddParameter(cmd, "@userProfileIdSender", friend.userProfileIdSender);
+                    DbUtils.AddParameter(cmd, "@userProfileIdReceive", friend.userProfileIdReceive);
+
+                    friend.Id = (int)cmd.ExecuteScalar();
+                }
+            }
+        }
+
+        public void Delete(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                    DELETE FROM Friends
+                    WHERE Id = @id";
+                    DbUtils.AddParameter(cmd, "@id", id);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }
